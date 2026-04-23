@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mindmap Markdown + Mermaid</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Mindmap Studio</h1>
+      <p>
+        Éditez une mindmap avec une syntaxe Markdown simple ou du Mermaid, puis
+        visualisez-la proprement.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel editor-panel">
+        <div class="panel-title">
+          <h2>Éditeur</h2>
+        </div>
+
+        <div class="controls-row">
+          <label for="inputMode">Mode d'entrée</label>
+          <select id="inputMode">
+            <option value="markdown">Markdown hiérarchique</option>
+            <option value="mermaid">Mermaid</option>
+          </select>
+        </div>
+
+        <textarea id="sourceInput" spellcheck="false"></textarea>
+
+        <div class="actions">
+          <button id="renderBtn">Visualiser</button>
+          <button id="templateBtn" class="secondary">Recharger modèle</button>
+          <button id="copyBtn" class="secondary">Copier le texte</button>
+        </div>
+
+        <details>
+          <summary>Aide rapide</summary>
+          <ul>
+            <li>
+              En mode <strong>Markdown</strong>, utilisez titres (<code>#</code>)
+              ou listes indentées (<code>-</code>) pour créer les niveaux.
+            </li>
+            <li>
+              En mode <strong>Mermaid</strong>, utilisez un diagramme
+              <code>mindmap</code> standard Mermaid.
+            </li>
+            <li>
+              Les entrées sont converties en Mermaid puis rendues automatiquement.
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="panel preview-panel">
+        <div class="panel-title">
+          <h2>Prévisualisation</h2>
+        </div>
+        <pre id="errorBox" hidden></pre>
+        <div id="preview" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
